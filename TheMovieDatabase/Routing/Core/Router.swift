@@ -1,0 +1,48 @@
+//
+//  Router.swift
+//  TheMovieDatabase
+//
+//  Created by İbrahim Kültepe on 15.08.2023.
+//
+
+import UIKit
+
+protocol RouterProtocol: AnyObject {
+    func open(_ viewController: UIViewController, transition: Transition)
+    func close()
+}
+
+class Router: RouterProtocol {
+    
+    weak var viewController: UIViewController?
+    var openTransition: Transition?
+
+    func open(_ viewController: UIViewController, transition: Transition) {
+        transition.viewController = self.viewController
+        transition.open(viewController)
+    }
+
+    func close() {
+        guard let openTransition = openTransition else {
+            assertionFailure("You should specify an open transition in order to close a module.")
+            return
+        }
+        guard let viewController = viewController else {
+            assertionFailure("Nothing to close.")
+            return
+        }
+        openTransition.close(viewController)
+    }
+    
+    func dismiss(isAnimated: Bool = true, completion: VoidClosure? = nil) {
+        guard let viewController = self.viewController else {
+            assertionFailure("Nothing to close.")
+            return
+        }
+        viewController.dismiss(animated: isAnimated, completion: completion)
+    }
+    
+    deinit {
+        debugPrint("deinit \(self)")
+    }
+}

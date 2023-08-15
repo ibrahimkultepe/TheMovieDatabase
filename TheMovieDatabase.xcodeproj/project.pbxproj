@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2AF06888F1E6EE966F3578CE /* Pods_TheMovieDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD30CB588202D4DC061296E6 /* Pods_TheMovieDatabase.framework */; };
+		9C7F6C8A2A8BDF0200CCD9EE /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6C892A8BDF0200CCD9EE /* AppRouter.swift */; };
+		9C7F6C8C2A8BDF2D00CCD9EE /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6C8B2A8BDF2D00CCD9EE /* Animator.swift */; };
+		9C7F6C8E2A8BDF4100CCD9EE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6C8D2A8BDF4100CCD9EE /* Router.swift */; };
+		9C7F6C902A8BDF5D00CCD9EE /* ModalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6C8F2A8BDF5D00CCD9EE /* ModalTransition.swift */; };
+		9C7F6C922A8BDF7100CCD9EE /* PlaceOnWindowTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6C912A8BDF7100CCD9EE /* PlaceOnWindowTransition.swift */; };
+		9C7F6C942A8BDF8300CCD9EE /* PushTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6C932A8BDF8300CCD9EE /* PushTransition.swift */; };
+		9C7F6C962A8BDF9C00CCD9EE /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6C952A8BDF9C00CCD9EE /* Transition.swift */; };
 		9C93EB042A8B8B8200202671 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C93EB032A8B8B8200202671 /* AppDelegate.swift */; };
 		9C93EB062A8B8B8200202671 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C93EB052A8B8B8200202671 /* SceneDelegate.swift */; };
 		9C93EB082A8B8B8200202671 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C93EB072A8B8B8200202671 /* ViewController.swift */; };
@@ -17,6 +24,13 @@
 
 /* Begin PBXFileReference section */
 		06DFE0B5E286ABC611965927 /* Pods-TheMovieDatabase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDatabase.release.xcconfig"; path = "Target Support Files/Pods-TheMovieDatabase/Pods-TheMovieDatabase.release.xcconfig"; sourceTree = "<group>"; };
+		9C7F6C892A8BDF0200CCD9EE /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		9C7F6C8B2A8BDF2D00CCD9EE /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		9C7F6C8D2A8BDF4100CCD9EE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		9C7F6C8F2A8BDF5D00CCD9EE /* ModalTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTransition.swift; sourceTree = "<group>"; };
+		9C7F6C912A8BDF7100CCD9EE /* PlaceOnWindowTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOnWindowTransition.swift; sourceTree = "<group>"; };
+		9C7F6C932A8BDF8300CCD9EE /* PushTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushTransition.swift; sourceTree = "<group>"; };
+		9C7F6C952A8BDF9C00CCD9EE /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		9C93EB002A8B8B8200202671 /* TheMovieDatabase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovieDatabase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C93EB032A8B8B8200202671 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C93EB052A8B8B8200202671 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +54,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C7F6C832A8BDEAE00CCD9EE /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				9C7F6C862A8BDED200CCD9EE /* Routers */,
+				9C7F6C852A8BDEC700CCD9EE /* Core */,
+				9C7F6C842A8BDEBD00CCD9EE /* Transitions */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		9C7F6C842A8BDEBD00CCD9EE /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				9C7F6C8F2A8BDF5D00CCD9EE /* ModalTransition.swift */,
+				9C7F6C912A8BDF7100CCD9EE /* PlaceOnWindowTransition.swift */,
+				9C7F6C932A8BDF8300CCD9EE /* PushTransition.swift */,
+				9C7F6C952A8BDF9C00CCD9EE /* Transition.swift */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
+		9C7F6C852A8BDEC700CCD9EE /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				9C7F6C8B2A8BDF2D00CCD9EE /* Animator.swift */,
+				9C7F6C8D2A8BDF4100CCD9EE /* Router.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		9C7F6C862A8BDED200CCD9EE /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				9C7F6C892A8BDF0200CCD9EE /* AppRouter.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
 		9C93EAF72A8B8B8200202671 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +113,7 @@
 		9C93EB022A8B8B8200202671 /* TheMovieDatabase */ = {
 			isa = PBXGroup;
 			children = (
+				9C7F6C832A8BDEAE00CCD9EE /* Routing */,
 				9C93EB032A8B8B8200202671 /* AppDelegate.swift */,
 				9C93EB052A8B8B8200202671 /* SceneDelegate.swift */,
 				9C93EB072A8B8B8200202671 /* ViewController.swift */,
@@ -85,7 +138,6 @@
 				9E9FB65B3311F4E6AB5E9530 /* Pods-TheMovieDatabase.debug.xcconfig */,
 				06DFE0B5E286ABC611965927 /* Pods-TheMovieDatabase.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -185,8 +237,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C7F6C962A8BDF9C00CCD9EE /* Transition.swift in Sources */,
+				9C7F6C8C2A8BDF2D00CCD9EE /* Animator.swift in Sources */,
+				9C7F6C8A2A8BDF0200CCD9EE /* AppRouter.swift in Sources */,
 				9C93EB082A8B8B8200202671 /* ViewController.swift in Sources */,
 				9C93EB042A8B8B8200202671 /* AppDelegate.swift in Sources */,
+				9C7F6C8E2A8BDF4100CCD9EE /* Router.swift in Sources */,
+				9C7F6C922A8BDF7100CCD9EE /* PlaceOnWindowTransition.swift in Sources */,
+				9C7F6C902A8BDF5D00CCD9EE /* ModalTransition.swift in Sources */,
+				9C7F6C942A8BDF8300CCD9EE /* PushTransition.swift in Sources */,
 				9C93EB062A8B8B8200202671 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
