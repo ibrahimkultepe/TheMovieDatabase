@@ -21,7 +21,6 @@
 		9C7F6C9F2A8BE05500CCD9EE /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6C9E2A8BE05500CCD9EE /* DataProvider.swift */; };
 		9C7F6CA12A8BE06A00CCD9EE /* APIRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6CA02A8BE06A00CCD9EE /* APIRequestInterceptor.swift */; };
 		9C93EB042A8B8B8200202671 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C93EB032A8B8B8200202671 /* AppDelegate.swift */; };
-		9C93EB062A8B8B8200202671 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C93EB052A8B8B8200202671 /* SceneDelegate.swift */; };
 		9C93EB082A8B8B8200202671 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C93EB072A8B8B8200202671 /* ViewController.swift */; };
 		9C93EB0D2A8B8B8600202671 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C93EB0C2A8B8B8600202671 /* Assets.xcassets */; };
 		9C93EB102A8B8B8600202671 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C93EB0E2A8B8B8600202671 /* LaunchScreen.storyboard */; };
@@ -41,9 +40,9 @@
 		9C7F6C9C2A8BE03D00CCD9EE /* APILogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILogger.swift; sourceTree = "<group>"; };
 		9C7F6C9E2A8BE05500CCD9EE /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		9C7F6CA02A8BE06A00CCD9EE /* APIRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestInterceptor.swift; sourceTree = "<group>"; };
+		9C7F6CA72A8BE30B00CCD9EE /* TheMovieDatabase-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TheMovieDatabase-Bridging-Header.h"; sourceTree = "<group>"; };
 		9C93EB002A8B8B8200202671 /* TheMovieDatabase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovieDatabase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C93EB032A8B8B8200202671 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9C93EB052A8B8B8200202671 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9C93EB072A8B8B8200202671 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9C93EB0C2A8B8B8600202671 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C93EB0F2A8B8B8600202671 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -114,6 +113,22 @@
 			path = DataProvider;
 			sourceTree = "<group>";
 		};
+		9C7F6CA22A8BE0B900CCD9EE /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				9C93EB032A8B8B8200202671 /* AppDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		9C7F6CA82A8BE35A00CCD9EE /* BridgingHeader */ = {
+			isa = PBXGroup;
+			children = (
+				9C7F6CA72A8BE30B00CCD9EE /* TheMovieDatabase-Bridging-Header.h */,
+			);
+			path = BridgingHeader;
+			sourceTree = "<group>";
+		};
 		9C93EAF72A8B8B8200202671 = {
 			isa = PBXGroup;
 			children = (
@@ -135,10 +150,10 @@
 		9C93EB022A8B8B8200202671 /* TheMovieDatabase */ = {
 			isa = PBXGroup;
 			children = (
+				9C7F6CA82A8BE35A00CCD9EE /* BridgingHeader */,
+				9C7F6CA22A8BE0B900CCD9EE /* Delegate */,
 				9C7F6C972A8BDFFD00CCD9EE /* DataProvider */,
 				9C7F6C832A8BDEAE00CCD9EE /* Routing */,
-				9C93EB032A8B8B8200202671 /* AppDelegate.swift */,
-				9C93EB052A8B8B8200202671 /* SceneDelegate.swift */,
 				9C93EB072A8B8B8200202671 /* ViewController.swift */,
 				9C93EB0C2A8B8B8600202671 /* Assets.xcassets */,
 				9C93EB0E2A8B8B8600202671 /* LaunchScreen.storyboard */,
@@ -274,7 +289,6 @@
 				9C7F6C9F2A8BE05500CCD9EE /* DataProvider.swift in Sources */,
 				9C7F6C902A8BDF5D00CCD9EE /* ModalTransition.swift in Sources */,
 				9C7F6C942A8BDF8300CCD9EE /* PushTransition.swift in Sources */,
-				9C93EB062A8B8B8200202671 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
