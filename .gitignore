@@ -164,3 +164,4 @@ playground.xcworkspace
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,cocoapods,git,objective-c
 *.DS_Store
 Fodamy.xcodeproj/xcuserdata/ibrahimkultepe.xcuserdatad/xcschemes/xcschememanagement.plist
+TheMovieDatabase.xcodeproj/project.xcworkspace/xcuserdata
