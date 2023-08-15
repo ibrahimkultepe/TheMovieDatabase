@@ -165,3 +165,5 @@ playground.xcworkspace
 *.DS_Store
 Fodamy.xcodeproj/xcuserdata/ibrahimkultepe.xcuserdatad/xcschemes/xcschememanagement.plist
 TheMovieDatabase.xcodeproj/project.xcworkspace/xcuserdata
+TheMovieDatabase.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+TheMovieDatabase.xcodeproj/xcuserdata/ibrahimkultepe.xcuserdatad/xcschemes/xcschememanagement.plist
