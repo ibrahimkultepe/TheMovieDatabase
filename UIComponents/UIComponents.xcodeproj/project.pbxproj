@@ -16,6 +16,21 @@
 		9CB9EC442A8C0D7D00C43B00 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB9EC432A8C0D7D00C43B00 /* ActivityIndicator.swift */; };
 		9CB9EC462A8C0D9500C43B00 /* ActivityIndicatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB9EC452A8C0D9500C43B00 /* ActivityIndicatorProtocol.swift */; };
 		9CB9EC482A8C0DAD00C43B00 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB9EC472A8C0DAD00C43B00 /* ActivityIndicatorView.swift */; };
+		9CC5AF262A8CB0F0004DC5C0 /* Modules.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CC5AF162A8CB0F0004DC5C0 /* Modules.strings */; };
+		9CC5AF272A8CB0F0004DC5C0 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5AF172A8CB0F0004DC5C0 /* StringConstants.swift */; };
+		9CC5AF282A8CB0F0004DC5C0 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5AF192A8CB0F0004DC5C0 /* UIFont+Extensions.swift */; };
+		9CC5AF292A8CB0F0004DC5C0 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9CC5AF1A2A8CB0F0004DC5C0 /* Nunito-ExtraBold.ttf */; };
+		9CC5AF2A2A8CB0F0004DC5C0 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9CC5AF1B2A8CB0F0004DC5C0 /* Nunito-SemiBold.ttf */; };
+		9CC5AF2B2A8CB0F0004DC5C0 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9CC5AF1C2A8CB0F0004DC5C0 /* Nunito-Bold.ttf */; };
+		9CC5AF2C2A8CB0F0004DC5C0 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5AF1D2A8CB0F0004DC5C0 /* Fonts.swift */; };
+		9CC5AF2D2A8CB0F0004DC5C0 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5AF1F2A8CB0F0004DC5C0 /* Assets.swift */; };
+		9CC5AF2E2A8CB0F0004DC5C0 /* UIImage+Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5AF202A8CB0F0004DC5C0 /* UIImage+Icons.swift */; };
+		9CC5AF2F2A8CB0F0004DC5C0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC5AF212A8CB0F0004DC5C0 /* Colors.xcassets */; };
+		9CC5AF302A8CB0F0004DC5C0 /* UIImage+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5AF222A8CB0F0004DC5C0 /* UIImage+Images.swift */; };
+		9CC5AF312A8CB0F0004DC5C0 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC5AF232A8CB0F0004DC5C0 /* Icons.xcassets */; };
+		9CC5AF322A8CB0F0004DC5C0 /* UIColor+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5AF242A8CB0F0004DC5C0 /* UIColor+Colors.swift */; };
+		9CC5AF332A8CB0F0004DC5C0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC5AF252A8CB0F0004DC5C0 /* Images.xcassets */; };
+		9CC5AF362A8CB3D9004DC5C0 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9CC5AF352A8CB3D9004DC5C0 /* swiftgen.yml */; };
 		9CC765A22A8BE85F00626ECA /* UIComponents.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CC765A12A8BE85F00626ECA /* UIComponents.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -31,6 +46,21 @@
 		9CB9EC432A8C0D7D00C43B00 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		9CB9EC452A8C0D9500C43B00 /* ActivityIndicatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorProtocol.swift; sourceTree = "<group>"; };
 		9CB9EC472A8C0DAD00C43B00 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		9CC5AF162A8CB0F0004DC5C0 /* Modules.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Modules.strings; sourceTree = "<group>"; };
+		9CC5AF172A8CB0F0004DC5C0 /* StringConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
+		9CC5AF192A8CB0F0004DC5C0 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		9CC5AF1A2A8CB0F0004DC5C0 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+		9CC5AF1B2A8CB0F0004DC5C0 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		9CC5AF1C2A8CB0F0004DC5C0 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		9CC5AF1D2A8CB0F0004DC5C0 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		9CC5AF1F2A8CB0F0004DC5C0 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		9CC5AF202A8CB0F0004DC5C0 /* UIImage+Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Icons.swift"; sourceTree = "<group>"; };
+		9CC5AF212A8CB0F0004DC5C0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		9CC5AF222A8CB0F0004DC5C0 /* UIImage+Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Images.swift"; sourceTree = "<group>"; };
+		9CC5AF232A8CB0F0004DC5C0 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		9CC5AF242A8CB0F0004DC5C0 /* UIColor+Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Colors.swift"; sourceTree = "<group>"; };
+		9CC5AF252A8CB0F0004DC5C0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9CC5AF352A8CB3D9004DC5C0 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		9CC7659E2A8BE85F00626ECA /* UIComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC765A12A8BE85F00626ECA /* UIComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIComponents.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,9 +118,55 @@
 			path = Loading;
 			sourceTree = "<group>";
 		};
+		9CC5AF142A8CB0F0004DC5C0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9CC5AF152A8CB0F0004DC5C0 /* Strings */,
+				9CC5AF182A8CB0F0004DC5C0 /* Fonts */,
+				9CC5AF1E2A8CB0F0004DC5C0 /* Assets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9CC5AF152A8CB0F0004DC5C0 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				9CC5AF162A8CB0F0004DC5C0 /* Modules.strings */,
+				9CC5AF172A8CB0F0004DC5C0 /* StringConstants.swift */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		9CC5AF182A8CB0F0004DC5C0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9CC5AF192A8CB0F0004DC5C0 /* UIFont+Extensions.swift */,
+				9CC5AF1A2A8CB0F0004DC5C0 /* Nunito-ExtraBold.ttf */,
+				9CC5AF1B2A8CB0F0004DC5C0 /* Nunito-SemiBold.ttf */,
+				9CC5AF1C2A8CB0F0004DC5C0 /* Nunito-Bold.ttf */,
+				9CC5AF1D2A8CB0F0004DC5C0 /* Fonts.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		9CC5AF1E2A8CB0F0004DC5C0 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9CC5AF1F2A8CB0F0004DC5C0 /* Assets.swift */,
+				9CC5AF202A8CB0F0004DC5C0 /* UIImage+Icons.swift */,
+				9CC5AF232A8CB0F0004DC5C0 /* Icons.xcassets */,
+				9CC5AF242A8CB0F0004DC5C0 /* UIColor+Colors.swift */,
+				9CC5AF212A8CB0F0004DC5C0 /* Colors.xcassets */,
+				9CC5AF222A8CB0F0004DC5C0 /* UIImage+Images.swift */,
+				9CC5AF252A8CB0F0004DC5C0 /* Images.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		9CC765942A8BE85F00626ECA = {
 			isa = PBXGroup;
 			children = (
+				9CC5AF352A8CB3D9004DC5C0 /* swiftgen.yml */,
 				9CC765A02A8BE85F00626ECA /* UIComponents */,
 				9CC7659F2A8BE85F00626ECA /* Products */,
 				55DF9408CB4C57696E09E6FD /* Pods */,
@@ -109,6 +185,7 @@
 		9CC765A02A8BE85F00626ECA /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				9CC5AF142A8CB0F0004DC5C0 /* Resources */,
 				9C9CF76D2A8C0E8B00BD11A9 /* Toast */,
 				9CB9EC402A8C0D3000C43B00 /* Loading */,
 				9CC765A12A8BE85F00626ECA /* UIComponents.h */,
@@ -139,6 +216,7 @@
 				9CC7659A2A8BE85F00626ECA /* Sources */,
 				9CC7659B2A8BE85F00626ECA /* Frameworks */,
 				9CC7659C2A8BE85F00626ECA /* Resources */,
+				9CC5AF382A8CB502004DC5C0 /* Swiftgen */,
 			);
 			buildRules = (
 			);
@@ -187,6 +265,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CC5AF2A2A8CB0F0004DC5C0 /* Nunito-SemiBold.ttf in Resources */,
+				9CC5AF332A8CB0F0004DC5C0 /* Images.xcassets in Resources */,
+				9CC5AF2B2A8CB0F0004DC5C0 /* Nunito-Bold.ttf in Resources */,
+				9CC5AF362A8CB3D9004DC5C0 /* swiftgen.yml in Resources */,
+				9CC5AF312A8CB0F0004DC5C0 /* Icons.xcassets in Resources */,
+				9CC5AF292A8CB0F0004DC5C0 /* Nunito-ExtraBold.ttf in Resources */,
+				9CC5AF2F2A8CB0F0004DC5C0 /* Colors.xcassets in Resources */,
+				9CC5AF262A8CB0F0004DC5C0 /* Modules.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +301,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9CC5AF382A8CB502004DC5C0 /* Swiftgen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftgen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -223,11 +327,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CB9EC442A8C0D7D00C43B00 /* ActivityIndicator.swift in Sources */,
+				9CC5AF2D2A8CB0F0004DC5C0 /* Assets.swift in Sources */,
+				9CC5AF2E2A8CB0F0004DC5C0 /* UIImage+Icons.swift in Sources */,
+				9CC5AF322A8CB0F0004DC5C0 /* UIColor+Colors.swift in Sources */,
 				9C9CF7712A8C0EB700BD11A9 /* TostWarningView.swift in Sources */,
 				9CB9EC422A8C0D4900C43B00 /* LoadingProtocol.swift in Sources */,
+				9CC5AF302A8CB0F0004DC5C0 /* UIImage+Images.swift in Sources */,
 				9C9CF7732A8C0ECD00BD11A9 /* TostSuccessView.swift in Sources */,
+				9CC5AF272A8CB0F0004DC5C0 /* StringConstants.swift in Sources */,
 				9CB9EC462A8C0D9500C43B00 /* ActivityIndicatorProtocol.swift in Sources */,
+				9CC5AF2C2A8CB0F0004DC5C0 /* Fonts.swift in Sources */,
 				9CB9EC482A8C0DAD00C43B00 /* ActivityIndicatorView.swift in Sources */,
+				9CC5AF282A8CB0F0004DC5C0 /* UIFont+Extensions.swift in Sources */,
 				9C9CF76F2A8C0E9600BD11A9 /* ToastPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
