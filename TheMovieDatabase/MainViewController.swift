@@ -1,15 +1,14 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  TheMovieDatabase
 //
 //  Created by İbrahim Kültepe on 15.08.2023.
 //
 
-import UIKit
-
-class ViewController: UIViewController {
+final class MainViewController: BaseViewController<MainViewModel> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .red
     }
 }
