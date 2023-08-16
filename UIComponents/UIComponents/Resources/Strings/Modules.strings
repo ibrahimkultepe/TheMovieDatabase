@@ -1,0 +1,9 @@
+/* 
+  Modules.strings
+  UIComponents
+
+  Created by İbrahim Kültepe on 16.04.2023.
+  
+*/
+// MARK: - General
+"General.backButtonTitle" = "Örnek";
