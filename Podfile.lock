@@ -1,3 +1,77 @@
-PODFILE CHECKSUM: a845e992e6f049230f829627b3492e79889f698e
+PODS:
+  - Alamofire (5.6.1)
+  - IQKeyboardManagerSwift (6.5.10)
+  - KeychainSwift (19.0.0)
+  - Kingfisher (6.3.1)
+  - MobilliumBuilders (1.4.2)
+  - MobilliumDateFormatter (1.3.0)
+  - MobilliumUserDefaults (2.0.0)
+  - QuickLayout (3.0.0)
+  - Segmentio (4.1)
+  - SKPhotoBrowser (7.0.0)
+  - SwiftEntryKit (1.2.7):
+    - QuickLayout (= 3.0.0)
+  - SwiftGen (6.5.1)
+  - SwiftLint (0.47.1)
+  - TinyConstraints (4.0.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.4)
+  - IQKeyboardManagerSwift (~> 6.5)
+  - KeychainSwift (~> 19.0)
+  - Kingfisher (from `https://github.com/onevcat/Kingfisher.git`, branch `version6-xcode13`)
+  - MobilliumBuilders (~> 1.4)
+  - MobilliumDateFormatter (~> 1.2)
+  - MobilliumUserDefaults (~> 2.0)
+  - Segmentio (~> 4.1)
+  - SKPhotoBrowser (~> 7.0)
+  - SwiftEntryKit (~> 1.2)
+  - SwiftGen (~> 6.5)
+  - SwiftLint (~> 0.44)
+  - TinyConstraints (~> 4.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - KeychainSwift
+    - MobilliumBuilders
+    - MobilliumDateFormatter
+    - MobilliumUserDefaults
+    - QuickLayout
+    - Segmentio
+    - SKPhotoBrowser
+    - SwiftEntryKit
+    - SwiftGen
+    - SwiftLint
+    - TinyConstraints
+
+EXTERNAL SOURCES:
+  Kingfisher:
+    :branch: version6-xcode13
+    :git: https://github.com/onevcat/Kingfisher.git
+
+CHECKOUT OPTIONS:
+  Kingfisher:
+    :commit: d0494dd78f7adf2d3526fdf3267176553020c041
+    :git: https://github.com/onevcat/Kingfisher.git
+
+SPEC CHECKSUMS:
+  Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
+  IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
+  Kingfisher: 8b783c3d7be73a99b2172a743a5bc0a4dd331d79
+  MobilliumBuilders: 48c29da981a9593ac7f7873d154f9a76b80ffcab
+  MobilliumDateFormatter: 747bca02d30d51937ca48c58241ed3b2d230166e
+  MobilliumUserDefaults: 002aa4bb663127d2dcc0814c17430c918a1e1445
+  QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
+  Segmentio: ab29def64e1bff6e6e9b97671788a99bed3f1d9f
+  SKPhotoBrowser: 6aaa8f232752e87c7e76bace183bead0a137097d
+  SwiftEntryKit: 537c92699d6034efb1ef9c32b11e0b37c97aa589
+  SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
+  SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
+  TinyConstraints: 7b7ccc0c485bb3bb47082138ff28bc33cd49897f
+
+PODFILE CHECKSUM: 2771e822ff949aa67c78ccc9b86d717180fa4dce
 
 COCOAPODS: 1.11.3
