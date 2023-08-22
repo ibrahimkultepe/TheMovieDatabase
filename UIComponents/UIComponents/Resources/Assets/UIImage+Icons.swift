@@ -6,6 +6,10 @@ import UIKit
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 public extension UIImage {
 
+  static var icChevron: UIImage {
+      return Asset.Icons.icChevron.image
+  }
+
   static var icBack: UIImage {
       return Asset.Icons.icBack.image
   }

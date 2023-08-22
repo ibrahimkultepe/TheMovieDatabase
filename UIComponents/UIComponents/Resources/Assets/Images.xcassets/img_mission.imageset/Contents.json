@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "img_mission.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
