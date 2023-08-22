@@ -13,7 +13,7 @@ class BaseViewController<V: BaseViewModelProtocol>: UIViewController, BaseViewCo
     
     private let tryAgainButton = UIButtonBuilder()
         .titleColor(.white)
-        .titleFont(UIFont(name: "Nunito-Bold", size: 16))
+        .titleFont(.font(.nunitoBold, size: .xxLarge))
         .build()
     
     var viewModel: V
@@ -51,7 +51,7 @@ extension BaseViewController {
         tryAgainButton.centerInSuperview()
         tryAgainButton.backgroundColor = .red
         tryAgainButton.size(.init(width: 200, height: 50))
-        tryAgainButton.setTitle("L10n.Base.errorButtonTitle", for: .normal)
+        tryAgainButton.setTitle(L10n.Base.errorButtonTitle, for: .normal)
         tryAgainButton.addTarget(self, action: #selector(tryAgainButtonTapped), for: .touchUpInside)
     }
     

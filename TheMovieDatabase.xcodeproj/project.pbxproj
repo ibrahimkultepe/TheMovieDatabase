@@ -193,8 +193,8 @@
 		9CC5AF392A8CB56B004DC5C0 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				9CC5AF3A2A8CB57F004DC5C0 /* Main */,
 				9CB9EC3B2A8C0BDE00C43B00 /* Base */,
+				9CC5AF3A2A8CB57F004DC5C0 /* Main */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";

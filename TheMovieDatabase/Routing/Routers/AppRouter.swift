@@ -14,6 +14,6 @@ final class AppRouter: Router, AppRouter.Routes {
     static let shared = AppRouter()
     
     func startApp() {
-        placeOnWindowWalkthrough()
+        placeOnWindowMain()
     }
 }

@@ -6,12 +6,12 @@
 //
 
 protocol MainRoute {
-    func placeOnWindowWalkthrough()
+    func placeOnWindowMain()
 }
 
 extension MainRoute where Self: RouterProtocol {
     
-    func placeOnWindowWalkthrough() {
+    func placeOnWindowMain() {
         let router = MainRouter()
         let viewModel = MainViewModel(router: router)
         let viewController = MainViewController(viewModel: viewModel)

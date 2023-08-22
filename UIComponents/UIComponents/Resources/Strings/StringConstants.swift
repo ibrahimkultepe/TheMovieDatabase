@@ -11,9 +11,9 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum L10n {
 
-  public enum General {
-    /// Örnek
-    public static let backButtonTitle = L10n.tr("Modules", "General.backButtonTitle")
+  public enum Base {
+    /// Try Again
+    public static let errorButtonTitle = L10n.tr("Modules", "Base.errorButtonTitle")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
