@@ -7,3 +7,6 @@
 */
 // MARK: - Base
 "Base.errorButtonTitle" = "Try Again";
+
+// MARK: - General
+"General.posterPathBaseURL" = "https://image.tmdb.org/t/p/original";

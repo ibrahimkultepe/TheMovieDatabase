@@ -1,13 +1,15 @@
 //
-//  MainCell.swift
+//  HomeCell.swift
 //  UIComponents
 //
 //  Created by İbrahim Kültepe on 17.08.2023.
 //
 
-public class MainCell: UICollectionViewCell, ReusableView {
+import MobilliumDateFormatter
+
+public class HomeCell: UICollectionViewCell, ReusableView {
     
-    weak var viewModel: MainCellModelProtocol?
+    weak var viewModel: HomeCellModelProtocol?
     
     private let imageView = UIImageViewBuilder()
         .contentMode(.scaleToFill)
@@ -20,7 +22,7 @@ public class MainCell: UICollectionViewCell, ReusableView {
         .font(.font(.nunitoBold, size: .xxLarge))
         .build()
     
-    private let descriptionLabel = UILabelBuilder()
+    private let overviewLabel = UILabelBuilder()
         .textColor(.appRaven)
         .font(.font(.nunitoBold, size: .xLarge))
         .numberOfLines(2)
@@ -56,7 +58,7 @@ public class MainCell: UICollectionViewCell, ReusableView {
 }
 
 // MARK: - UILayout
-extension MainCell {
+extension HomeCell {
     
     private func addSubviews() {
         contentView.addSubview(imageView)
@@ -67,7 +69,7 @@ extension MainCell {
         titleAndDescriptionStackView.leadingToTrailing(of: imageView).constant = 10
         titleAndDescriptionStackView.edgesToSuperview(excluding: [.left, .bottom], insets: .top(30) + .right(40))
         titleAndDescriptionStackView.addArrangedSubview(titleLabel)
-        titleAndDescriptionStackView.addArrangedSubview(descriptionLabel)
+        titleAndDescriptionStackView.addArrangedSubview(overviewLabel)
         
         contentView.addSubview(dateLabel)
         dateLabel.leadingToTrailing(of: imageView)
@@ -88,13 +90,16 @@ extension MainCell {
 }
 
 //MARK: - SetCellItem
-public extension MainCell {
+public extension HomeCell {
     
-    func setCellItem(viewModel: MainCellModelProtocol) {
+    func setCellItem(viewModel: HomeCellModelProtocol) {
         self.viewModel = viewModel
-        self.titleLabel.text = viewModel.title
-        self.descriptionLabel.text = viewModel.description
-        self.imageView.image = viewModel.image
-        self.dateLabel.text = viewModel.date
+        titleLabel.text = viewModel.title
+        overviewLabel.text = viewModel.overview
+        imageView.setImage(L10n.General.posterPathBaseURL + (viewModel.posterPath ?? ""))
+        
+        let apiDate = Date.from(viewModel.date ?? "", format: .custom(rawValue: "yyyy-dd-mm"))
+        let displayDateString = apiDate?.to(.custom(rawValue: "dd.mm.yyyy"))
+        dateLabel.text = displayDateString
     }
 }

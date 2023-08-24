@@ -1,20 +1,20 @@
 //
-//  MainRoute.swift
+//  HomeRoute.swift
 //  TheMovieDatabase
 //
 //  Created by İbrahim Kültepe on 15.08.2023.
 //
 
-protocol MainRoute {
-    func placeOnWindowMain()
+protocol HomeRoute {
+    func placeOnWindowHome()
 }
 
-extension MainRoute where Self: RouterProtocol {
+extension HomeRoute where Self: RouterProtocol {
     
-    func placeOnWindowMain() {
-        let router = MainRouter()
-        let viewModel = MainViewModel(router: router)
-        let viewController = MainViewController(viewModel: viewModel)
+    func placeOnWindowHome() {
+        let router = HomeRouter()
+        let viewModel = HomeViewModel(router: router)
+        let viewController = HomeViewController(viewModel: viewModel)
         let navController = UINavigationController(rootViewController: viewController)
         
         let transition = PlaceOnWindowTransition()

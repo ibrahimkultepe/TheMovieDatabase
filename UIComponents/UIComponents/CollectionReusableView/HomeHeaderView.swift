@@ -1,11 +1,11 @@
 //
-//  MainHeaderView.swift
+//  HomeHeaderView.swift
 //  UIComponents
 //
 //  Created by İbrahim Kültepe on 17.08.2023.
 //
 
-public class MainHeaderView: UICollectionReusableView, ReusableView {
+public class HomeHeaderView: UICollectionReusableView, ReusableView {
     
     private let collectionView = UICollectionViewBuilder()
         .backgroundColor(.clear)
@@ -16,12 +16,12 @@ public class MainHeaderView: UICollectionReusableView, ReusableView {
         .pageIndicatorTintColor(.appWhite.withAlphaComponent(0.2))
         .currentPageIndicatorTintColor(.appWhite)
         .isUserInteractionEnabled(false)
-        .numberOfPages(5)
         .build()
     
-    public var mainHeaderData: [MainCellModelProtocol] = [] {
+    public var homeHeaderData: [HomeHeaderCellModelProtocol] = [] {
         didSet {
             collectionView.reloadData()
+            pageControl.numberOfPages = homeHeaderData.count
         }
     }
     
@@ -37,7 +37,7 @@ public class MainHeaderView: UICollectionReusableView, ReusableView {
 }
 
 // MARK: - UILayout
-extension MainHeaderView {
+extension HomeHeaderView {
     
     private func addSubviews() {
         addSubview(collectionView)
@@ -50,10 +50,10 @@ extension MainHeaderView {
 }
 
 // MARK: - ConfigureContent
-extension MainHeaderView {
+extension HomeHeaderView {
     
     private func configureContent() {
-        collectionView.register(MainHeaderCell.self)
+        collectionView.register(HomeHeaderCell.self)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.isPagingEnabled = true
@@ -62,7 +62,7 @@ extension MainHeaderView {
 }
 
 // MARK: - UIScrollViewDelegate
-extension MainHeaderView {
+extension HomeHeaderView {
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offSet = scrollView.contentOffset.x
@@ -73,22 +73,22 @@ extension MainHeaderView {
 }
 
 // MARK: - UICollectionViewDataSource
-extension MainHeaderView: UICollectionViewDataSource {
+extension HomeHeaderView: UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return mainHeaderData.count
+        return homeHeaderData.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: MainHeaderCell = collectionView.dequeueReusableCell(for: indexPath)
-        let cellItem = mainHeaderData[indexPath.row]
+        let cell: HomeHeaderCell = collectionView.dequeueReusableCell(for: indexPath)
+        let cellItem = homeHeaderData[indexPath.row]
         cell.setCellItem(viewModel: cellItem)
         return cell
     }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension MainHeaderView: UICollectionViewDelegateFlowLayout {
+extension HomeHeaderView: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = collectionView.frame.size

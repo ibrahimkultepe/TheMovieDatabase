@@ -1,0 +1,121 @@
+//
+//  HomeViewModel.swift
+//  TheMovieDatabase
+//
+//  Created by İbrahim Kültepe on 15.08.2023.
+//
+
+protocol HomeViewDataSource {}
+
+protocol HomeViewEventSource {}
+
+protocol HomeViewProtocol: HomeViewDataSource, HomeViewEventSource {}
+
+final class HomeViewModel: BaseViewModel<HomeRouter>, HomeViewProtocol {
+    
+    var page = 1
+        
+    var isPagingEnabled = false
+    var isRequestEnabled = false
+    
+    private var isGetUpcomingMovieSuccess = false
+    private var isGetNowPlayingMovieSuccess = false
+    private let dispatchGroup = DispatchGroup()
+    
+    var getDataDidSuccess: VoidClosure?
+    var reloadData: VoidClosure?
+    
+    private var cellItems = [HomeCellModelProtocol]()
+    var homeHeaderCellItems = [HomeHeaderCellModelProtocol]()
+    
+    var numberOfItems: Int {
+        return cellItems.count
+    }
+    
+    func cellItemForAt(indexPath: IndexPath) -> HomeCellModelProtocol {
+        return cellItems[indexPath.row]
+    }
+    
+    override func tryAgainButtonTapped() {
+        self.hideTryAgainButton?()
+        getData(showLoading: true)
+    }
+    
+    func refreshData() {
+        cellItems.removeAll()
+        homeHeaderCellItems.removeAll()
+        page = 1
+        self.reloadData?()
+        self.isPagingEnabled = false
+        isGetUpcomingMovieSuccess = false
+        isGetNowPlayingMovieSuccess = false
+        getData(showLoading: false)
+    }
+}
+
+// MARK: - Network
+extension HomeViewModel {
+    
+    func getUpcomingMovies() {
+        let request = GetUpcomingMoviesRequest(page: page)
+        self.isRequestEnabled = true
+        dispatchGroup.enter()
+        dataProvider.request(for: request) { [weak self] (result) in
+            guard let self = self else { return }
+            self.dispatchGroup.leave()
+            switch result {
+            case .success(let response):
+                let cellItems = response.results.map( {HomeCellModel(movie: $0) })
+                self.cellItems.append(contentsOf: cellItems)
+                self.page += 1
+                self.isPagingEnabled = response.totalPage > response.page
+                self.isGetUpcomingMovieSuccess = true
+                self.reloadData?()
+            case .failure(let error):
+                self.showWarningToast?(error.localizedDescription)
+            }
+            self.isRequestEnabled = false
+        }
+    }
+    
+    private func getNowPlayingMovies() {
+        let request = GetNowPlayingMoviesRequest()
+        dispatchGroup.enter()
+        dataProvider.request(for: request) { [weak self] (result) in
+            guard let self = self else { return }
+            self.dispatchGroup.leave()
+            switch result {
+            case .success(let response):
+                let homeHeaderCellItems = response.results.map( {HomeHeaderCellModel(movie: $0) })
+                self.homeHeaderCellItems.append(contentsOf: homeHeaderCellItems)
+                self.isGetNowPlayingMovieSuccess = true
+            case .failure(let error):
+                self.showWarningToast?(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getData(showLoading: Bool) {
+        if showLoading && (!isGetUpcomingMovieSuccess || !isGetNowPlayingMovieSuccess) {
+            showActivityIndicatorView?()
+        }
+        
+        if !isGetUpcomingMovieSuccess {
+            getUpcomingMovies()
+        }
+        
+        if !isGetNowPlayingMovieSuccess {
+            getNowPlayingMovies()
+        }
+        
+        dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
+            guard let self = self else { return }
+            self.hideActivityIndicatorView?()
+            if self.isGetUpcomingMovieSuccess && self.isGetNowPlayingMovieSuccess {
+                self.getDataDidSuccess?()
+            } else {
+                self.showTryAgainButton?()
+            }
+        }
+    }
+}

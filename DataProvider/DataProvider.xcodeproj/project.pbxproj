@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		6893A470FE1D8348E975C127 /* Pods_DataProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 197FE0CFCA968A1285CACBB8 /* Pods_DataProvider.framework */; };
+		9C30EADB2A960919007A6CC4 /* GetNowPlayingMoviesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C30EADA2A960919007A6CC4 /* GetNowPlayingMoviesRequest.swift */; };
 		9C7F6CD22A8BE52D00CCD9EE /* DataProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C7F6CD12A8BE52D00CCD9EE /* DataProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9CB839D72A9556B1007AAB3D /* MoviesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB839D62A9556B1007AAB3D /* MoviesResponse.swift */; };
+		9CB839D92A955743007AAB3D /* MovieInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB839D82A955743007AAB3D /* MovieInfo.swift */; };
+		9CB839DB2A95582C007AAB3D /* GetUpcomingMoviesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB839DA2A95582C007AAB3D /* GetUpcomingMoviesRequest.swift */; };
 		9CB9EC292A8C09EA00C43B00 /* DecodableResponseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB9EC282A8C09EA00C43B00 /* DecodableResponseRequest.swift */; };
 		9CB9EC2B2A8C0A0100C43B00 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB9EC2A2A8C0A0100C43B00 /* Typealias.swift */; };
 		9CB9EC2D2A8C0A1E00C43B00 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB9EC2C2A8C0A1E00C43B00 /* RequestProtocol.swift */; };
@@ -20,8 +24,12 @@
 
 /* Begin PBXFileReference section */
 		197FE0CFCA968A1285CACBB8 /* Pods_DataProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C30EADA2A960919007A6CC4 /* GetNowPlayingMoviesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNowPlayingMoviesRequest.swift; sourceTree = "<group>"; };
 		9C7F6CCE2A8BE52D00CCD9EE /* DataProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C7F6CD12A8BE52D00CCD9EE /* DataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataProvider.h; sourceTree = "<group>"; };
+		9CB839D62A9556B1007AAB3D /* MoviesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesResponse.swift; sourceTree = "<group>"; };
+		9CB839D82A955743007AAB3D /* MovieInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfo.swift; sourceTree = "<group>"; };
+		9CB839DA2A95582C007AAB3D /* GetUpcomingMoviesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUpcomingMoviesRequest.swift; sourceTree = "<group>"; };
 		9CB9EC282A8C09EA00C43B00 /* DecodableResponseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableResponseRequest.swift; sourceTree = "<group>"; };
 		9CB9EC2A2A8C0A0100C43B00 /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		9CB9EC2C2A8C0A1E00C43B00 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
@@ -53,6 +61,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9C13FCB82A94B2A500ACD005 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9CB839D62A9556B1007AAB3D /* MoviesResponse.swift */,
+				9CB839D82A955743007AAB3D /* MovieInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9C13FCB92A94B2AF00ACD005 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				9CB839DA2A95582C007AAB3D /* GetUpcomingMoviesRequest.swift */,
+				9C30EADA2A960919007A6CC4 /* GetNowPlayingMoviesRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		9C7F6CC42A8BE52D00CCD9EE = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +100,8 @@
 		9C7F6CD02A8BE52D00CCD9EE /* DataProvider */ = {
 			isa = PBXGroup;
 			children = (
+				9C13FCB92A94B2AF00ACD005 /* Request */,
+				9C13FCB82A94B2A500ACD005 /* Model */,
 				9CB9EC272A8C09D400C43B00 /* Core */,
 				9C7F6CD12A8BE52D00CCD9EE /* DataProvider.h */,
 			);
@@ -212,7 +240,11 @@
 			files = (
 				9CB9EC2F2A8C0A3200C43B00 /* RequestMethod.swift in Sources */,
 				9CB9EC332A8C0A6100C43B00 /* APIDecodableResponseRequest.swift in Sources */,
+				9CB839D72A9556B1007AAB3D /* MoviesResponse.swift in Sources */,
+				9CB839DB2A95582C007AAB3D /* GetUpcomingMoviesRequest.swift in Sources */,
 				9CB9EC312A8C0A4A00C43B00 /* RequestEncoding.swift in Sources */,
+				9C30EADB2A960919007A6CC4 /* GetNowPlayingMoviesRequest.swift in Sources */,
+				9CB839D92A955743007AAB3D /* MovieInfo.swift in Sources */,
 				9CB9EC352A8C0A8000C43B00 /* DataProviderProtocol.swift in Sources */,
 				9CB9EC2D2A8C0A1E00C43B00 /* RequestProtocol.swift in Sources */,
 				9CB9EC2B2A8C0A0100C43B00 /* Typealias.swift in Sources */,

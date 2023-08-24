@@ -1,16 +1,17 @@
 //
-//  MainHeaderCell.swift
+//  HomeHeaderCell.swift
 //  UIComponents
 //
 //  Created by İbrahim Kültepe on 21.08.2023.
 //
 
-public class MainHeaderCell: UICollectionViewCell, ReusableView {
+public class HomeHeaderCell: UICollectionViewCell, ReusableView {
     
-    weak var viewModel: MainCellModelProtocol?
+    weak var viewModel: HomeHeaderCellModelProtocol?
     
     private let imageView = UIImageViewBuilder()
         .contentMode(.scaleToFill)
+        .clipsToBounds(true)
         .build()
     
     private let titleLabel = UILabelBuilder()
@@ -18,7 +19,7 @@ public class MainHeaderCell: UICollectionViewCell, ReusableView {
         .font(.font(.nunitoExtraBold, size: .custom(size: 18)))
         .build()
     
-    private let descriptionLabel = UILabelBuilder()
+    private let overviewLabel = UILabelBuilder()
         .textColor(.appWhite)
         .font(.font(.nunitoBold, size: .xLarge))
         .numberOfLines(2)
@@ -35,28 +36,28 @@ public class MainHeaderCell: UICollectionViewCell, ReusableView {
 }
 
 // MARK: - UILayout
-extension MainHeaderCell {
+extension HomeHeaderCell {
     
     private func addSubviews() {
         contentView.addSubview(imageView)
         imageView.edgesToSuperview()
         
         contentView.addSubview(titleLabel)
-        titleLabel.edgesToSuperview(excluding: .bottom, insets: .init(top: 140, left: 20, bottom: 0, right: 20))
+        titleLabel.edgesToSuperview(excluding: [.bottom, .top], insets: .init(top: 0, left: 20, bottom: 0, right: 20))
         
-        contentView.addSubview(descriptionLabel)
-        descriptionLabel.topToBottom(of: titleLabel).constant = 5
-        descriptionLabel.edgesToSuperview(excluding: [.top, .bottom], insets: .left(20) + .right(20))
+        contentView.addSubview(overviewLabel)
+        overviewLabel.topToBottom(of: titleLabel).constant = 5
+        overviewLabel.edgesToSuperview(excluding: .top, insets: .init(top: 0, left: 20, bottom: 30, right: 20))
     }
 }
 
 //MARK: - SetCellItem
-public extension MainHeaderCell {
-    
-    func setCellItem(viewModel: MainCellModelProtocol) {
+public extension HomeHeaderCell {
+
+    func setCellItem(viewModel: HomeHeaderCellModelProtocol) {
         self.viewModel = viewModel
-        self.titleLabel.text = viewModel.title
-        self.descriptionLabel.text = viewModel.description
-        self.imageView.image = viewModel.image
+        titleLabel.text = viewModel.title
+        overviewLabel.text = viewModel.overview
+        imageView.setImage(L10n.General.posterPathBaseURL + (viewModel.posterPath ?? ""))
     }
 }
