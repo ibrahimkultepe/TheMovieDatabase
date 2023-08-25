@@ -53,11 +53,6 @@ public enum Asset {
     public static let icWarning = ImageAsset(name: "ic_warning")
   }
   public enum Images {
-    public static let imgJack = ImageAsset(name: "img_jack")
-    public static let imgJason = ImageAsset(name: "img_jason")
-    public static let imgLotr = ImageAsset(name: "img_lotr")
-    public static let imgMission = ImageAsset(name: "img_mission")
-    public static let imgOppenheimer = ImageAsset(name: "img_oppenheimer")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

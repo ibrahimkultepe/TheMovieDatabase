@@ -15,11 +15,6 @@ public enum L10n {
     /// Try Again
     public static let errorButtonTitle = L10n.tr("Modules", "Base.errorButtonTitle")
   }
-
-  public enum General {
-    /// https://image.tmdb.org/t/p/original
-    public static let posterPathBaseURL = L10n.tr("Modules", "General.posterPathBaseURL")
-  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

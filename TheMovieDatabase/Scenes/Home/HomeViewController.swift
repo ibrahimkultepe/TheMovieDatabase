@@ -27,6 +27,16 @@ final class HomeViewController: BaseViewController<HomeViewModel> {
         subcribeViewModel()
         viewModel.getData(showLoading: true)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 }
 
 // MARK: - UILayout
@@ -46,8 +56,7 @@ extension HomeViewController {
 extension HomeViewController {
     
     private func configureContent() {
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        collectionView.register(HomeCell.self)
+        collectionView.register(HomeMovieCell.self)
         collectionView.registerHeader(HomeHeaderView.self)
         collectionView.registerFooter(ActivityIndicatorViewFooterView.self)
         collectionView.dataSource = self
@@ -90,7 +99,7 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: HomeCell = collectionView.dequeueReusableCell(for: indexPath)
+        let cell: HomeMovieCell = collectionView.dequeueReusableCell(for: indexPath)
         let cellItem = viewModel.cellItemForAt(indexPath: indexPath)
         cell.setCellItem(viewModel: cellItem)
         return cell
@@ -99,17 +108,17 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionHeader {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
             let header: HomeHeaderView = collectionView.dequeueReusableCell(ofKind: kind, for: indexPath)
             header.homeHeaderData = viewModel.homeHeaderCellItems
             return header
-        }
-        
-        if kind == UICollectionView.elementKindSectionFooter {
+        case UICollectionView.elementKindSectionFooter:
             let footer: ActivityIndicatorViewFooterView = collectionView.dequeueReusableCell(ofKind: kind, for: indexPath)
             return footer
+        default:
+            return UICollectionReusableView()
         }
-        return UICollectionReusableView()
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -152,6 +161,9 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if viewModel.homeHeaderCellItems.isEmpty {
+            return CGSize(width: collectionView.bounds.width, height: 0)
+        }
         return CGSize(width: collectionView.bounds.width, height: 250)
     }
     
@@ -163,6 +175,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - SubscribeViewModel
 extension HomeViewController {
     
     func subcribeViewModel() {

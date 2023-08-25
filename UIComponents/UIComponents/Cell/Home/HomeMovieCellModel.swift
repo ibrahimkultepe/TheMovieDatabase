@@ -1,24 +1,24 @@
 //
-//  HomeCellModel.swift
+//  HomeMovieCellModel.swift
 //  UIComponents
 //
 //  Created by İbrahim Kültepe on 17.08.2023.
 //
 
-public protocol HomeCellModelDataSource: AnyObject {
+public protocol HomeMovieCellModelDataSource: AnyObject {
     var posterPath: String? { get }
     var title: String? { get }
     var overview: String? { get }
     var date: String? { get }
 }
 
-public protocol HomeCellModelEventSource: AnyObject {
+public protocol HomeMovieCellModelEventSource: AnyObject {
 }
 
-public protocol HomeCellModelProtocol: HomeCellModelDataSource, HomeCellModelEventSource {
+public protocol HomeMovieCellModelProtocol: HomeMovieCellModelDataSource, HomeMovieCellModelEventSource {
 }
 
-public final class HomeCellModel: HomeCellModelProtocol {
+public final class HomeMovieCellModel: HomeMovieCellModelProtocol {
     
     public var posterPath: String?
     public var title: String?

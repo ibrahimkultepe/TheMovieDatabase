@@ -13,7 +13,7 @@ protocol HomeViewProtocol: HomeViewDataSource, HomeViewEventSource {}
 
 final class HomeViewModel: BaseViewModel<HomeRouter>, HomeViewProtocol {
     
-    var page = 1
+    private var page = 1
         
     var isPagingEnabled = false
     var isRequestEnabled = false
@@ -25,14 +25,14 @@ final class HomeViewModel: BaseViewModel<HomeRouter>, HomeViewProtocol {
     var getDataDidSuccess: VoidClosure?
     var reloadData: VoidClosure?
     
-    private var cellItems = [HomeCellModelProtocol]()
+    private var cellItems = [HomeMovieCellModelProtocol]()
     var homeHeaderCellItems = [HomeHeaderCellModelProtocol]()
     
     var numberOfItems: Int {
         return cellItems.count
     }
     
-    func cellItemForAt(indexPath: IndexPath) -> HomeCellModelProtocol {
+    func cellItemForAt(indexPath: IndexPath) -> HomeMovieCellModelProtocol {
         return cellItems[indexPath.row]
     }
     
@@ -62,10 +62,9 @@ extension HomeViewModel {
         dispatchGroup.enter()
         dataProvider.request(for: request) { [weak self] (result) in
             guard let self = self else { return }
-            self.dispatchGroup.leave()
             switch result {
             case .success(let response):
-                let cellItems = response.results.map( {HomeCellModel(movie: $0) })
+                let cellItems = response.results.map( {HomeMovieCellModel(movie: $0) })
                 self.cellItems.append(contentsOf: cellItems)
                 self.page += 1
                 self.isPagingEnabled = response.totalPage > response.page
@@ -75,6 +74,7 @@ extension HomeViewModel {
                 self.showWarningToast?(error.localizedDescription)
             }
             self.isRequestEnabled = false
+            self.dispatchGroup.leave()
         }
     }
     
@@ -83,15 +83,16 @@ extension HomeViewModel {
         dispatchGroup.enter()
         dataProvider.request(for: request) { [weak self] (result) in
             guard let self = self else { return }
-            self.dispatchGroup.leave()
             switch result {
             case .success(let response):
                 let homeHeaderCellItems = response.results.map( {HomeHeaderCellModel(movie: $0) })
                 self.homeHeaderCellItems.append(contentsOf: homeHeaderCellItems)
                 self.isGetNowPlayingMovieSuccess = true
+                self.reloadData?()
             case .failure(let error):
                 self.showWarningToast?(error.localizedDescription)
             }
+            self.dispatchGroup.leave()
         }
     }
     

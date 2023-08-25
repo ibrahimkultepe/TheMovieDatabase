@@ -58,6 +58,6 @@ public extension HomeHeaderCell {
         self.viewModel = viewModel
         titleLabel.text = viewModel.title
         overviewLabel.text = viewModel.overview
-        imageView.setImage(L10n.General.posterPathBaseURL + (viewModel.posterPath ?? ""))
+        imageView.setImage(Config.posterPathBaseURL + (viewModel.posterPath ?? ""))
     }
 }

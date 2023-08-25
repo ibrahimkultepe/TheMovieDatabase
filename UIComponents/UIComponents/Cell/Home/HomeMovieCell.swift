@@ -1,15 +1,13 @@
 //
-//  HomeCell.swift
+//  HomeMovieCell.swift
 //  UIComponents
 //
 //  Created by İbrahim Kültepe on 17.08.2023.
 //
 
-import MobilliumDateFormatter
-
-public class HomeCell: UICollectionViewCell, ReusableView {
+public class HomeMovieCell: UICollectionViewCell, ReusableView {
     
-    weak var viewModel: HomeCellModelProtocol?
+    weak var viewModel: HomeMovieCellModelProtocol?
     
     private let imageView = UIImageViewBuilder()
         .contentMode(.scaleToFill)
@@ -58,7 +56,7 @@ public class HomeCell: UICollectionViewCell, ReusableView {
 }
 
 // MARK: - UILayout
-extension HomeCell {
+extension HomeMovieCell {
     
     private func addSubviews() {
         contentView.addSubview(imageView)
@@ -90,16 +88,13 @@ extension HomeCell {
 }
 
 //MARK: - SetCellItem
-public extension HomeCell {
+public extension HomeMovieCell {
     
-    func setCellItem(viewModel: HomeCellModelProtocol) {
+    func setCellItem(viewModel: HomeMovieCellModelProtocol) {
         self.viewModel = viewModel
         titleLabel.text = viewModel.title
         overviewLabel.text = viewModel.overview
-        imageView.setImage(L10n.General.posterPathBaseURL + (viewModel.posterPath ?? ""))
-        
-        let apiDate = Date.from(viewModel.date ?? "", format: .custom(rawValue: "yyyy-dd-mm"))
-        let displayDateString = apiDate?.to(.custom(rawValue: "dd.mm.yyyy"))
-        dateLabel.text = displayDateString
+        imageView.setImage(Config.posterPathBaseURL + (viewModel.posterPath ?? ""))
+        dateLabel.text = viewModel.date
     }
 }
