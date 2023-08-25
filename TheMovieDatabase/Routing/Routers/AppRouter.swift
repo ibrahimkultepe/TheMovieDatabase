@@ -9,11 +9,11 @@ import UIKit
 
 final class AppRouter: Router, AppRouter.Routes {
     
-    typealias Routes = MainRoute
+    typealias Routes = HomeRoute
     
     static let shared = AppRouter()
     
     func startApp() {
-        placeOnWindowMain()
+        placeOnWindowHome()
     }
 }

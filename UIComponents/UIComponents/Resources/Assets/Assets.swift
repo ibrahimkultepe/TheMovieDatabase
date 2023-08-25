@@ -33,6 +33,7 @@ public enum Asset {
     public static let appZircon = ColorAsset(name: "appZircon")
   }
   public enum Icons {
+    public static let icChevron = ImageAsset(name: "icChevron")
     public static let icBack = ImageAsset(name: "ic_back")
     public static let icClock = ImageAsset(name: "ic_clock")
     public static let icClose = ImageAsset(name: "ic_close")

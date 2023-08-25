@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6F714983BCFCD10F74ABF661 /* Pods_Utilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B5F5A527981E83EE52D925 /* Pods_Utilities.framework */; };
+		9C14E5462A9775430031E176 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C14E5452A9775430031E176 /* Config.swift */; };
 		9C7F6CED2A8BE57100CCD9EE /* Utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C7F6CEC2A8BE57100CCD9EE /* Utilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9CB9EC382A8C0B0100C43B00 /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB9EC372A8C0B0100C43B00 /* Closures.swift */; };
 		9CB9EC3A2A8C0B8900C43B00 /* Keychain+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB9EC392A8C0B8900C43B00 /* Keychain+Constants.swift */; };
@@ -16,6 +17,7 @@
 /* Begin PBXFileReference section */
 		46691400E82EF78EE8FD9164 /* Pods-Utilities.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Utilities.debug.xcconfig"; path = "Target Support Files/Pods-Utilities/Pods-Utilities.debug.xcconfig"; sourceTree = "<group>"; };
 		93E6B9CD149B49A7105867DF /* Pods-Utilities.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Utilities.release.xcconfig"; path = "Target Support Files/Pods-Utilities/Pods-Utilities.release.xcconfig"; sourceTree = "<group>"; };
+		9C14E5452A9775430031E176 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		9C7F6CE92A8BE57100CCD9EE /* Utilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Utilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C7F6CEC2A8BE57100CCD9EE /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		9CB9EC372A8C0B0100C43B00 /* Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				9CB9EC372A8C0B0100C43B00 /* Closures.swift */,
 				9CB9EC392A8C0B8900C43B00 /* Keychain+Constants.swift */,
+				9C14E5452A9775430031E176 /* Config.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			files = (
 				9CB9EC382A8C0B0100C43B00 /* Closures.swift in Sources */,
 				9CB9EC3A2A8C0B8900C43B00 /* Keychain+Constants.swift in Sources */,
+				9C14E5462A9775430031E176 /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
