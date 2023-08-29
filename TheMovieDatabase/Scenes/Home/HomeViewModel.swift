@@ -15,7 +15,7 @@ final class HomeViewModel: BaseViewModel<HomeRouter>, HomeViewProtocol {
     
     private var page = 1
     
-    var searchMovies = [SearchCellModelProtocol]()
+    var searchMovieItems = [SearchCellModelProtocol]()
     
     var isPagingEnabled = false
     var isRequestEnabled = false
@@ -106,8 +106,7 @@ extension HomeViewModel {
             self.hideActivityIndicatorView?()
             switch result {
             case .success(let response):
-                let searchMovies = response.results.map( {SearchCellModel(movie: $0) })
-                self.searchMovies.append(contentsOf: searchMovies)
+                self.searchMovieItems = response.results.map( {SearchCellModel(movie: $0) })
             case .failure(let error):
                 self.showWarningToast?(error.localizedDescription)
             }

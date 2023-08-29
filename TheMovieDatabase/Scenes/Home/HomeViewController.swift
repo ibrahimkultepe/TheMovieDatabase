@@ -13,6 +13,7 @@ final class HomeViewController: BaseViewController<HomeViewModel> {
         let searchRouter = SearchRouter()
         let searchViewModel = SearchViewModel(router: searchRouter)
         let searchViewController = SearchViewController(viewModel: searchViewModel)
+        searchRouter.viewController = self
         
         let searchController = UISearchController(searchResultsController: searchViewController)
         searchController.searchResultsUpdater = self
@@ -33,6 +34,11 @@ final class HomeViewController: BaseViewController<HomeViewModel> {
         setLocalize()
         subcribeViewModel()
         viewModel.getData(showLoading: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        searchTimer?.invalidate()
     }
 }
 
@@ -93,8 +99,8 @@ extension HomeViewController: UISearchResultsUpdating {
             searchTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _ in
                 self?.viewModel.searchMovies(query: searchText)
                 let searchViewController = searchController.searchResultsController as? SearchViewController
-                searchViewController?.searchMoviesData = self?.viewModel.searchMovies ?? []
-                self?.viewModel.searchMovies.removeAll()
+                searchViewController?.cellItems = self?.viewModel.searchMovieItems ?? []
+                self?.viewModel.searchMovieItems.removeAll()
             })
         }
     }

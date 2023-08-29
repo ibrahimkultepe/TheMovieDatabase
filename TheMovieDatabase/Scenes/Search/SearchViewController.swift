@@ -8,13 +8,15 @@
 final class SearchViewController: BaseViewController<SearchViewModel> {
     
     private let collectionView = UICollectionViewBuilder()
-        .backgroundColor(.clear)
+        .backgroundColor(.appZircon)
         .scrollDirection(.vertical)
+        .isHidden(true)
         .build()
     
-    public var searchMoviesData: [SearchCellModelProtocol] = [] {
+    public var cellItems: [SearchCellModelProtocol] = [] {
         didSet {
             collectionView.reloadData()
+            collectionView.isHidden = false
         }
     }
     
@@ -48,12 +50,12 @@ extension SearchViewController {
 extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searchMoviesData.count
+        return cellItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SearchCell = collectionView.dequeueReusableCell(for: indexPath)
-        let cellItem = searchMoviesData[indexPath.row]
+        let cellItem = cellItems[indexPath.row]
         cell.setCellItem(viewModel: cellItem)
         return cell
     }
@@ -62,13 +64,15 @@ extension SearchViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = collectionView.frame.size
         return CGSize(width: size.width, height: 50)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

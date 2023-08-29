@@ -29,13 +29,10 @@ public class SearchCell: UICollectionViewCell, ReusableView {
         .image(.icSearch)
         .build()
     
-    private let seperator = UIViewBuilder()
-        .backgroundColor(.appZircon)
-        .build()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()
+        configureContent()
     }
     
     required init?(coder: NSCoder) {
@@ -60,10 +57,14 @@ extension SearchCell {
         titleLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         labelStackView.addArrangedSubview(dateLabel)
         dateLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
+    }
+}
 
-        contentView.addSubview(seperator)
-        seperator.edgesToSuperview(excluding: .top)
-        seperator.height(1)
+// MARK: - ConfigureContent
+extension SearchCell {
+    
+    private func configureContent() {
+        contentView.backgroundColor = .appWhite
     }
 }
 
