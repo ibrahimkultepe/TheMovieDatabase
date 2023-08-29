@@ -14,7 +14,9 @@ protocol HomeViewProtocol: HomeViewDataSource, HomeViewEventSource {}
 final class HomeViewModel: BaseViewModel<HomeRouter>, HomeViewProtocol {
     
     private var page = 1
-        
+    
+    var searchMovies = [SearchCellModelProtocol]()
+    
     var isPagingEnabled = false
     var isRequestEnabled = false
     
@@ -57,7 +59,7 @@ final class HomeViewModel: BaseViewModel<HomeRouter>, HomeViewProtocol {
 extension HomeViewModel {
     
     func getUpcomingMovies() {
-        let request = GetUpcomingMoviesRequest(page: page)
+        let request = UpcomingMoviesRequest(page: page)
         self.isRequestEnabled = true
         dispatchGroup.enter()
         dataProvider.request(for: request) { [weak self] (result) in
@@ -79,7 +81,7 @@ extension HomeViewModel {
     }
     
     private func getNowPlayingMovies() {
-        let request = GetNowPlayingMoviesRequest()
+        let request = NowPlayingMoviesRequest()
         dispatchGroup.enter()
         dataProvider.request(for: request) { [weak self] (result) in
             guard let self = self else { return }
@@ -93,6 +95,22 @@ extension HomeViewModel {
                 self.showWarningToast?(error.localizedDescription)
             }
             self.dispatchGroup.leave()
+        }
+    }
+    
+    func searchMovies(query: String) {
+        let request = MovieSearchRequest(query: query)
+        self.showActivityIndicatorView?()
+        dataProvider.request(for: request) { [weak self] (result) in
+            guard let self = self else { return }
+            self.hideActivityIndicatorView?()
+            switch result {
+            case .success(let response):
+                let searchMovies = response.results.map( {SearchCellModel(movie: $0) })
+                self.searchMovies.append(contentsOf: searchMovies)
+            case .failure(let error):
+                self.showWarningToast?(error.localizedDescription)
+            }
         }
     }
     

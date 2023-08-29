@@ -9,10 +9,14 @@ final class HomeViewController: BaseViewController<HomeViewModel> {
     
     private let refreshControl = UIRefreshControl()
     
-    private let searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.backgroundImage = UIImage()
-        return searchBar
+    private lazy var searchController: UISearchController = {
+        let searchRouter = SearchRouter()
+        let searchViewModel = SearchViewModel(router: searchRouter)
+        let searchViewController = SearchViewController(viewModel: searchViewModel)
+        
+        let searchController = UISearchController(searchResultsController: searchViewController)
+        searchController.searchResultsUpdater = self
+        return searchController
     }()
     
     private let collectionView = UICollectionViewBuilder()
@@ -20,22 +24,15 @@ final class HomeViewController: BaseViewController<HomeViewModel> {
         .scrollDirection(.vertical)
         .build()
     
+    private var searchTimer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
         configureContent()
+        setLocalize()
         subcribeViewModel()
         viewModel.getData(showLoading: true)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
 
@@ -43,12 +40,8 @@ final class HomeViewController: BaseViewController<HomeViewModel> {
 extension HomeViewController {
     
     private func addSubviews() {
-        view.addSubview(searchBar)
-        searchBar.edgesToSuperview(excluding: .bottom, insets: .init(top: 0, left: 15, bottom: 0, right: 15), usingSafeArea: true)
-        
         view.addSubview(collectionView)
-        collectionView.topToBottom(of: searchBar).constant = 5
-        collectionView.edgesToSuperview(excluding: .top)
+        collectionView.edgesToSuperview()
     }
 }
 
@@ -56,6 +49,7 @@ extension HomeViewController {
 extension HomeViewController {
     
     private func configureContent() {
+        definesPresentationContext = true
         collectionView.register(HomeMovieCell.self)
         collectionView.registerHeader(HomeHeaderView.self)
         collectionView.registerFooter(ActivityIndicatorViewFooterView.self)
@@ -63,8 +57,19 @@ extension HomeViewController {
         collectionView.delegate = self
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
-        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.searchTextField.clearButtonMode = .never
+        navigationItem.titleView = searchController.searchBar
+    }
+}
+
+// MARK: - SetLocalize
+extension HomeViewController {
+    
+    private func setLocalize() {
+        searchController.searchBar.placeholder = L10n.Home.searchControllerText
     }
 }
 
@@ -74,6 +79,24 @@ extension HomeViewController {
     @objc
     private func refreshData() {
         viewModel.refreshData()
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+extension HomeViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        searchTimer?.invalidate()
+        guard let searchText = searchController.searchBar.text else { return }
+        
+        if searchText.count >= 3 {
+            searchTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _ in
+                self?.viewModel.searchMovies(query: searchText)
+                let searchViewController = searchController.searchResultsController as? SearchViewController
+                searchViewController?.searchMoviesData = self?.viewModel.searchMovies ?? []
+                self?.viewModel.searchMovies.removeAll()
+            })
+        }
     }
 }
 

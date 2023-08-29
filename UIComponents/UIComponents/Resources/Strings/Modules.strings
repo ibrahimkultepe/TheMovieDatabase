@@ -7,3 +7,6 @@
 */
 // MARK: - Base
 "Base.errorButtonTitle" = "Try Again";
+
+// MARK: - Home
+"Home.searchControllerText" = "Search";
