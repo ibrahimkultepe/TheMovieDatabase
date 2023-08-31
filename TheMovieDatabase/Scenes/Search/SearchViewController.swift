@@ -44,9 +44,9 @@ extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if viewModel.cellItems.isEmpty {
-            collectionView.isHidden = true
+            collectionView.isHidden = viewModel.cellItems.isEmpty
         } else {
-            collectionView.isHidden = false
+            collectionView.isHidden = viewModel.cellItems.isEmpty
         }
         return viewModel.cellItems.count
     }
