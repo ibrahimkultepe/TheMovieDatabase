@@ -10,20 +10,13 @@ final class SearchViewController: BaseViewController<SearchViewModel> {
     private let collectionView = UICollectionViewBuilder()
         .backgroundColor(.appZircon)
         .scrollDirection(.vertical)
-        .isHidden(true)
         .build()
-    
-    public var cellItems: [SearchCellModelProtocol] = [] {
-        didSet {
-            collectionView.reloadData()
-            collectionView.isHidden = false
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
         configureContent()
+        subcribeViewModel()
     }
 }
 
@@ -50,12 +43,17 @@ extension SearchViewController {
 extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellItems.count
+        if viewModel.cellItems.isEmpty {
+            collectionView.isHidden = true
+        } else {
+            collectionView.isHidden = false
+        }
+        return viewModel.cellItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SearchCell = collectionView.dequeueReusableCell(for: indexPath)
-        let cellItem = cellItems[indexPath.row]
+        let cellItem = viewModel.cellItems[indexPath.row]
         cell.setCellItem(viewModel: cellItem)
         return cell
     }
@@ -77,5 +75,18 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+}
+
+// MARK: - SubscribeViewModel
+extension SearchViewController {
+    
+    func subcribeViewModel() {
+        viewModel.reloadData = { [weak self] in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
 }

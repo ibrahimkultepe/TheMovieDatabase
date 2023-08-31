@@ -12,4 +12,12 @@ protocol SearchViewEventSource {}
 protocol SearchViewProtocol: SearchViewDataSource, SearchViewEventSource {}
 
 final class SearchViewModel: BaseViewModel<SearchRouter>, SearchViewProtocol {
+    
+    var reloadData: VoidClosure?
+
+    public var cellItems: [SearchCellModelProtocol] = [] {
+        didSet {
+            reloadData?()
+        }
+    }
 }

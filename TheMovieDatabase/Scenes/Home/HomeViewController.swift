@@ -39,6 +39,7 @@ final class HomeViewController: BaseViewController<HomeViewModel> {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         searchTimer?.invalidate()
+        searchTimer = nil
     }
 }
 
@@ -67,6 +68,7 @@ extension HomeViewController {
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.searchTextField.clearButtonMode = .never
+        searchController.searchBar.delegate = self
         navigationItem.titleView = searchController.searchBar
     }
 }
@@ -93,16 +95,31 @@ extension HomeViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         searchTimer?.invalidate()
+        searchTimer = nil
         guard let searchText = searchController.searchBar.text else { return }
         
         if searchText.count >= 3 {
             searchTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _ in
                 self?.viewModel.searchMovies(query: searchText)
                 let searchViewController = searchController.searchResultsController as? SearchViewController
-                searchViewController?.cellItems = self?.viewModel.searchMovieItems ?? []
+                searchViewController?.viewModel.cellItems = self?.viewModel.searchMovieItems ?? []
                 self?.viewModel.searchMovieItems.removeAll()
             })
+        } else if searchText.isEmpty {
+            let searchViewController = searchController.searchResultsController as? SearchViewController
+            searchViewController?.viewModel.cellItems.removeAll()
+            viewModel.searchMovieItems.removeAll()
         }
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension HomeViewController: UISearchBarDelegate {
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        let searchViewController = searchController.searchResultsController as? SearchViewController
+        searchViewController?.viewModel.cellItems.removeAll()
+        viewModel.searchMovieItems.removeAll()
     }
 }
 
