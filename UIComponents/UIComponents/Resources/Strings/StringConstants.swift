@@ -15,6 +15,11 @@ public enum L10n {
     /// Try Again
     public static let errorButtonTitle = L10n.tr("Modules", "Base.errorButtonTitle")
   }
+
+  public enum Home {
+    /// Search
+    public static let searchControllerText = L10n.tr("Modules", "Home.searchControllerText")
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

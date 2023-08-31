@@ -1,15 +1,15 @@
 //
-//  GetUpcomingMoviesReques.swift
+//  UpcomingMoviesRequest.swift
 //  DataProvider
 //
 //  Created by İbrahim Kültepe on 22.08.2023.
 //
 
-public struct GetUpcomingMoviesRequest: APIDecodableResponseRequest {
+public struct UpcomingMoviesRequest: APIDecodableResponseRequest {
     
     public typealias ResponseType = MoviesResponse
     
-    public let path: String = "upcoming"
+    public let path: String = "movie/upcoming"
     public let method: RequestMethod = .get
     public var parameters: RequestParameters = [:]
 

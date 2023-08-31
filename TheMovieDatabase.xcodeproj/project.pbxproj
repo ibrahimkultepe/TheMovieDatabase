@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2AF06888F1E6EE966F3578CE /* Pods_TheMovieDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD30CB588202D4DC061296E6 /* Pods_TheMovieDatabase.framework */; };
+		9C1538942A9CA75E004A8189 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1538912A9CA75E004A8189 /* SearchRouter.swift */; };
+		9C1538952A9CA75E004A8189 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1538922A9CA75E004A8189 /* SearchViewController.swift */; };
+		9C1538962A9CA75E004A8189 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1538932A9CA75E004A8189 /* SearchViewModel.swift */; };
 		9C7F6C8A2A8BDF0200CCD9EE /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6C892A8BDF0200CCD9EE /* AppRouter.swift */; };
 		9C7F6C8C2A8BDF2D00CCD9EE /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6C8B2A8BDF2D00CCD9EE /* Animator.swift */; };
 		9C7F6C8E2A8BDF4100CCD9EE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6C8D2A8BDF4100CCD9EE /* Router.swift */; };
@@ -36,6 +39,9 @@
 
 /* Begin PBXFileReference section */
 		06DFE0B5E286ABC611965927 /* Pods-TheMovieDatabase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDatabase.release.xcconfig"; path = "Target Support Files/Pods-TheMovieDatabase/Pods-TheMovieDatabase.release.xcconfig"; sourceTree = "<group>"; };
+		9C1538912A9CA75E004A8189 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		9C1538922A9CA75E004A8189 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		9C1538932A9CA75E004A8189 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		9C7F6C892A8BDF0200CCD9EE /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		9C7F6C8B2A8BDF2D00CCD9EE /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		9C7F6C8D2A8BDF4100CCD9EE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -82,6 +88,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C1538902A9CA720004A8189 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				9C1538922A9CA75E004A8189 /* SearchViewController.swift */,
+				9C1538932A9CA75E004A8189 /* SearchViewModel.swift */,
+				9C1538912A9CA75E004A8189 /* SearchRouter.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		9C7F6C832A8BDEAE00CCD9EE /* Routing */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +211,7 @@
 			children = (
 				9CB9EC3B2A8C0BDE00C43B00 /* Base */,
 				9CC5AF3A2A8CB57F004DC5C0 /* Home */,
+				9C1538902A9CA720004A8189 /* Search */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -344,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C1538962A9CA75E004A8189 /* SearchViewModel.swift in Sources */,
 				9C7F6C962A8BDF9C00CCD9EE /* Transition.swift in Sources */,
 				9C7F6C8C2A8BDF2D00CCD9EE /* Animator.swift in Sources */,
 				9C7F6CA12A8BE06A00CCD9EE /* APIRequestInterceptor.swift in Sources */,
@@ -359,7 +377,9 @@
 				9C7F6C9B2A8BE02600CCD9EE /* APIRequestAdapter.swift in Sources */,
 				9C7F6C8E2A8BDF4100CCD9EE /* Router.swift in Sources */,
 				9C7F6C922A8BDF7100CCD9EE /* PlaceOnWindowTransition.swift in Sources */,
+				9C1538952A9CA75E004A8189 /* SearchViewController.swift in Sources */,
 				9C7F6C9F2A8BE05500CCD9EE /* DataProvider.swift in Sources */,
+				9C1538942A9CA75E004A8189 /* SearchRouter.swift in Sources */,
 				9C7F6C902A8BDF5D00CCD9EE /* ModalTransition.swift in Sources */,
 				9C7F6C942A8BDF8300CCD9EE /* PushTransition.swift in Sources */,
 				9C9CF7752A8C106200BD11A9 /* HomeViewModel.swift in Sources */,
@@ -430,7 +450,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -484,7 +504,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -509,7 +529,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -539,7 +559,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

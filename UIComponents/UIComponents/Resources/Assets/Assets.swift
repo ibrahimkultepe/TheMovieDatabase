@@ -46,6 +46,7 @@ public enum Asset {
     public static let icMore = ImageAsset(name: "ic_more")
     public static let icPassword = ImageAsset(name: "ic_password")
     public static let icRestaurant = ImageAsset(name: "ic_restaurant")
+    public static let icSearch = ImageAsset(name: "ic_search")
     public static let icSend = ImageAsset(name: "ic_send")
     public static let icShare = ImageAsset(name: "ic_share")
     public static let icUser = ImageAsset(name: "ic_user")

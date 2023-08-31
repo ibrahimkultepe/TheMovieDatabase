@@ -1,15 +1,15 @@
 //
-//  GetNowPlayingMoviesRequest.swift
+//  NowPlayingMoviesRequest.swift
 //  DataProvider
 //
 //  Created by İbrahim Kültepe on 23.08.2023.
 //
 
-public struct GetNowPlayingMoviesRequest: APIDecodableResponseRequest {
+public struct NowPlayingMoviesRequest: APIDecodableResponseRequest {
             
     public typealias ResponseType = MoviesResponse
 
-    public let path: String = "now_playing"
+    public let path: String = "movie/now_playing"
     public let method: RequestMethod = .get
     public var parameters: RequestParameters = [:]
 

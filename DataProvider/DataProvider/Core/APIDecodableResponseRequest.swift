@@ -22,7 +22,7 @@ public extension APIDecodableResponseRequest {
 // MARK: - url
 public extension APIDecodableResponseRequest {
     var url: String {
-        return "https://api.themoviedb.org/3/movie/" + path
+        return "https://api.themoviedb.org/3/" + path
     }
 }
 

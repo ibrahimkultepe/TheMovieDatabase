@@ -58,6 +58,10 @@ public extension UIImage {
       return Asset.Icons.icRestaurant.image
   }
 
+  static var icSearch: UIImage {
+      return Asset.Icons.icSearch.image
+  }
+
   static var icSend: UIImage {
       return Asset.Icons.icSend.image
   }
