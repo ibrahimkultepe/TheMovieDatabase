@@ -7,5 +7,5 @@
 
 public struct Config {
     public static let apiKey = "6a98cfba4b5137c6aec87c23ebf90f37"
-    public static let posterPathBaseURL = "https://image.tmdb.org/t/p/original"
+    public static let backdropPathBaseURL = "https://image.tmdb.org/t/p/original"
 }

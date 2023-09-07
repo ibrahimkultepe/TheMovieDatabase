@@ -6,10 +6,11 @@
 //
 
 public protocol HomeMovieCellModelDataSource: AnyObject {
-    var posterPath: String? { get }
+    var backdropPath: String? { get }
     var title: String? { get }
     var overview: String? { get }
     var date: String? { get }
+    var movieId: Int { get }
 }
 
 public protocol HomeMovieCellModelEventSource: AnyObject {
@@ -20,15 +21,17 @@ public protocol HomeMovieCellModelProtocol: HomeMovieCellModelDataSource, HomeMo
 
 public final class HomeMovieCellModel: HomeMovieCellModelProtocol {
     
-    public var posterPath: String?
+    public var backdropPath: String?
     public var title: String?
     public var overview: String?
     public var date: String?
+    public var movieId: Int
     
-    public init(posterPath: String?, title: String?, overview: String?, date: String?) {
-        self.posterPath = posterPath
+    public init(backdropPath: String?, title: String?, overview: String?, date: String?, movieId: Int) {
+        self.backdropPath = backdropPath
         self.title = title
         self.overview = overview
         self.date = date
+        self.movieId = movieId
     }
 }

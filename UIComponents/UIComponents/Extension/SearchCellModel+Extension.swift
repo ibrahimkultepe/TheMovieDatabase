@@ -12,6 +12,7 @@ public extension SearchCellModel {
         let displayDateString = apiDate?.to(.custom(rawValue: "(yyyy)"))
         
         self.init(title: movie.title,
-                  date: displayDateString)
+                  date: displayDateString,
+                  movieId: movie.movieId)
     }
 }

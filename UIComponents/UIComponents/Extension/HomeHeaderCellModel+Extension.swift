@@ -8,8 +8,9 @@
 public extension HomeHeaderCellModel {
     
     convenience init(movie: MovieInfo) {
-        self.init(posterPath: movie.posterPath,
+        self.init(backdropPath: movie.backdropPath,
                   title: movie.title,
-                  overview: movie.overview)
+                  overview: movie.overview,
+                  movieId: movie.movieId)
     }
 }

@@ -94,7 +94,7 @@ public extension HomeMovieCell {
         self.viewModel = viewModel
         titleLabel.text = viewModel.title
         overviewLabel.text = viewModel.overview
-        imageView.setImage(Config.posterPathBaseURL + (viewModel.posterPath ?? ""))
+        imageView.setImage(Config.backdropPathBaseURL + (viewModel.backdropPath ?? ""))
         dateLabel.text = viewModel.date
     }
 }
