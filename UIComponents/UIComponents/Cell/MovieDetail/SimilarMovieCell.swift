@@ -50,7 +50,7 @@ public extension SimilarMovieCell {
     
     func setCellItem(viewModel: SimilarMovieCellModelProtocol) {
         self.viewModel = viewModel
-        imageView.setImage(Config.backdropPathBaseURL + (viewModel.backdropPath ?? ""))
+        imageView.setImage(viewModel.backdropPath)
         titleLabel.text = viewModel.title
     }
 }

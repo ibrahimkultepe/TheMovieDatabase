@@ -6,6 +6,10 @@ import UIKit
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 public extension UIImage {
 
+  static var imgEmptyMovie: UIImage {
+      return Asset.Images.imgEmptyMovie.image
+  }
+
   static var imgFilledStar: UIImage {
       return Asset.Images.imgFilledStar.image
   }

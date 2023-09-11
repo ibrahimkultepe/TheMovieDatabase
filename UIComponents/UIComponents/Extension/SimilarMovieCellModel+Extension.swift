@@ -11,7 +11,7 @@ public extension SimilarMovieCellModel {
         let apiDate = Date.from(movieSimilar.date ?? "", format: .custom(rawValue: "yyyy-dd-mm"))
         let displayDateString = apiDate?.to(.custom(rawValue: "(yyyy)"))
         
-        self.init(backdropPath: movieSimilar.backdropPath,
+        self.init(backdropPath: Config.backdropPathBaseURL + (movieSimilar.backdropPath ?? ""),
                   title: "\(movieSimilar.title ?? "")" +  " \(displayDateString ?? "")",
                   movieId: movieSimilar.movieId)
     }

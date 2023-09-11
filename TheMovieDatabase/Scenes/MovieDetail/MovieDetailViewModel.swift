@@ -5,25 +5,37 @@
 //  Created by İbrahim Kültepe on 2.09.2023.
 //
 
-protocol MovieDetailViewDataSource {}
+protocol MovieDetailViewDataSource {
+    var backdropPath: String? { get }
+    var movieRating: String? { get }
+    var date: String? { get }
+    var title: String? { get }
+    var overview: String? { get }
+    var starRating: Double? { get }
+}
 
-protocol MovieDetailViewEventSource {}
+protocol MovieDetailViewEventSource {
+    var getDataDidSuccess: VoidClosure? { get set }
+}
 
-protocol MovieDetailViewProtocol: MovieDetailViewDataSource, MovieDetailViewEventSource {}
+protocol MovieDetailViewProtocol: MovieDetailViewDataSource, MovieDetailViewEventSource {
+    func getMovieDetail()
+    func getMovieSimilar()
+}
 
 final class MovieDetailViewModel: BaseViewModel<MovieDetailRouter>, MovieDetailViewProtocol {
     
-    var movieId: Int
+    private var movieId: Int
     var backdropPath: String?
     var movieRating: String?
     var date: String?
     var title: String?
     var overview: String?
     var starRating: Double?
-
+    
     var getDataDidSuccess: VoidClosure?
-
-    private var cellItems = [SimilarMovieCellModelProtocol]()
+    
+    var cellItems = [SimilarMovieCellModelProtocol]()
     
     var numberOfItems: Int {
         return cellItems.count
@@ -32,17 +44,23 @@ final class MovieDetailViewModel: BaseViewModel<MovieDetailRouter>, MovieDetailV
     func cellItemForAt(indexPath: IndexPath) -> SimilarMovieCellModelProtocol {
         return cellItems[indexPath.row]
     }
-
+    
     private func setItem(movieDetail: MovieDetail) {
         let apiDate = Date.from(movieDetail.date ?? "", format: .custom(rawValue: "yyyy-dd-mm"))
         let displayDateString = apiDate?.to(.custom(rawValue: "(yyyy)"))
-
-        backdropPath = movieDetail.backdropPath
+        
+        backdropPath = Config.backdropPathBaseURL + (movieDetail.backdropPath ?? "")
         movieRating = String(format: "%.1f", movieDetail.movieRating)
         date = apiDate?.to(.custom(rawValue: "dd.mm.yyyy"))
         title = "\(movieDetail.title ?? "")  \(displayDateString ?? "")"
         overview = movieDetail.overview
         starRating = movieDetail.movieRating
+    }
+    
+    override func tryAgainButtonTapped() {
+        self.hideTryAgainButton?()
+        getMovieDetail()
+        getMovieSimilar()
     }
     
     init(movieId: Int, router: MovieDetailRouter) {
@@ -64,8 +82,8 @@ extension MovieDetailViewModel {
 extension MovieDetailViewModel {
     
     func getMovieDetail() {
-        let request = MovieDetailRequest(movieId: movieId)
         self.showActivityIndicatorView?()
+        let request = MovieDetailRequest(movieId: movieId)
         dataProvider.request(for: request) { [weak self] (result) in
             guard let self = self else { return }
             self.hideActivityIndicatorView?()
@@ -75,13 +93,14 @@ extension MovieDetailViewModel {
                 self.getDataDidSuccess?()
             case .failure(let error):
                 self.showWarningToast?(error.localizedDescription)
+                self.showTryAgainButton?()
             }
         }
     }
     
     func getMovieSimilar() {
-        let request = SimilarMoviesRequest(movieId: movieId)
         self.showActivityIndicatorView?()
+        let request = SimilarMoviesRequest(movieId: movieId)
         dataProvider.request(for: request) { [weak self] (result) in
             guard let self = self else { return }
             self.hideActivityIndicatorView?()

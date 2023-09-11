@@ -11,7 +11,7 @@ final class MovieDetailViewController: BaseViewController<MovieDetailViewModel> 
         .build()
     
     private let contentView = UIViewBuilder()
-           .build()
+        .build()
     
     private let contentStackView = UIStackViewBuilder()
         .axis(.vertical)
@@ -22,7 +22,7 @@ final class MovieDetailViewController: BaseViewController<MovieDetailViewModel> 
         .build()
     
     private let ratingAndDateView = UIViewBuilder()
-           .build()
+        .build()
     
     private let ratingAndDateStackView = UIStackViewBuilder()
         .spacing(10)
@@ -96,9 +96,9 @@ final class MovieDetailViewController: BaseViewController<MovieDetailViewModel> 
         addSubviews()
         configureContent()
         setLocalize()
+        subcribeViewModel()
         viewModel.getMovieDetail()
         viewModel.getMovieSimilar()
-        subcribeViewModel()
     }
 }
 
@@ -106,25 +106,36 @@ final class MovieDetailViewController: BaseViewController<MovieDetailViewModel> 
 extension MovieDetailViewController {
     
     private func addSubviews() {
+        addMovieImageView()
+        addScrollView()
+        addContentStackView()
+        addSimilarStackView()
+    }
+    
+    private func addMovieImageView() {
         view.addSubview(movieImageView)
         movieImageView.edgesToSuperview(excluding: .bottom, usingSafeArea: false)
-        movieImageView.height(250)
-        
+        movieImageView.aspectRatio(1)
+    }
+    
+    private func addScrollView() {
         view.addSubview(scrollView)
-        scrollView.topToBottom(of: movieImageView).constant = 10
+        scrollView.topToBottom(of: movieImageView)
         scrollView.edgesToSuperview(excluding: [.bottom, .top], usingSafeArea: true)
-
+        
         scrollView.addSubview(contentView)
         contentView.edgesToSuperview()
         contentView.widthToSuperview()
         
         contentView.addSubview(contentStackView)
         contentStackView.edgesToSuperview(insets: .init(top: 0, left: 20, bottom: 0, right: 20))
-        
+    }
+    
+    private func addContentStackView() {
         contentStackView.addArrangedSubview(ratingAndDateView)
         ratingAndDateView.addSubview(ratingAndDateStackView)
         ratingAndDateStackView.edgesToSuperview(excluding: .right)
-
+        
         ratingAndDateStackView.addArrangedSubview(imdbImageView)
         imdbImageView.size(.init(width: 48, height: 48))
         
@@ -138,14 +149,17 @@ extension MovieDetailViewController {
         
         ratingAndDateStackView.addArrangedSubview(yellowCircleImageView)
         yellowCircleImageView.size(.init(width: 6, height: 6))
-    
+        
         ratingAndDateStackView.addArrangedSubview(movieDateLabel)
         ratingAndDateStackView.setCustomSpacing(10, after: movieDateLabel)
         
         contentStackView.addArrangedSubview(movieInfoStackView)
+        
         movieInfoStackView.addArrangedSubview(movieTitleLabel)
         movieInfoStackView.addArrangedSubview(movieOverviewLabel)
-        
+    }
+    
+    private func addSimilarStackView() {
         view.addSubview(similarStackView)
         similarStackView.topToBottom(of: scrollView).constant = 10
         similarStackView.edgesToSuperview(excluding: .top, insets: .init(top: 0, left: 20, bottom: 0, right: 20), usingSafeArea: true)
@@ -165,7 +179,7 @@ extension MovieDetailViewController {
     }
     
     private func setItem() {
-        movieImageView.setImage(Config.backdropPathBaseURL + (viewModel.backdropPath ?? ""))
+        movieImageView.setImage(viewModel.backdropPath)
         movieRatingLabel.text = viewModel.movieRating
         movieDateLabel.text = viewModel.date
         movieTitleLabel.text = viewModel.title
@@ -181,12 +195,15 @@ extension MovieDetailViewController {
         }
     }
     
-    private func updateSubviews() {
+    private func setEmptyMovieImage() {
         if viewModel.backdropPath == nil {
-            movieImageView.removeFromSuperview()
-            scrollView.topToSuperview(usingSafeArea: true).constant = 10
-        } else {
-            view.addSubview(movieImageView)
+            movieImageView.image = .imgEmptyMovie
+        }
+    }
+    
+    private func setSimilarMoviesLabelHiddenStatus() {
+        if viewModel.cellItems.isEmpty {
+            similarMoviesLabel.isHidden = true
         }
     }
 }
@@ -200,12 +217,16 @@ extension MovieDetailViewController {
     }
 }
 
-// MARK: - UICollectionViewDataSource
-extension MovieDetailViewController: UICollectionViewDataSource {
+// MARK: - UICollectionViewDelegate
+extension MovieDetailViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.didSelectMovieDetail(indexPath: indexPath)
     }
+}
+
+// MARK: - UICollectionViewDataSource
+extension MovieDetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItems
@@ -228,11 +249,15 @@ extension MovieDetailViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: 100, height: collectionView.bounds.height)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
 }
@@ -240,14 +265,15 @@ extension MovieDetailViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - SubscribeViewModel
 extension MovieDetailViewController {
     
-    func subcribeViewModel() {
+    private func subcribeViewModel() {
         viewModel.getDataDidSuccess = { [weak self] in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.setItem()
                 self.similarMoviesCollectionView.reloadData()
+                self.setSimilarMoviesLabelHiddenStatus()
                 self.updateStarImage()
-                self.updateSubviews()
+                self.setEmptyMovieImage()
             }
         }
     }
