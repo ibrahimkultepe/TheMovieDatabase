@@ -13,9 +13,10 @@ public extension HomeMovieCellModel {
         let apiDate = Date.from(movie.date ?? "", format: .custom(rawValue: "yyyy-dd-mm"))
         let displayDateString = apiDate?.to(.custom(rawValue: "dd.mm.yyyy"))
         
-        self.init(posterPath: movie.posterPath,
+        self.init(backdropPath: movie.backdropPath,
                   title: movie.title,
                   overview: movie.overview,
-                  date: displayDateString)
+                  date: displayDateString,
+                  movieId: movie.movieId)
     }
 }

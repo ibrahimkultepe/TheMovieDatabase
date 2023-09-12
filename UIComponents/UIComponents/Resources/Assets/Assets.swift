@@ -54,6 +54,11 @@ public enum Asset {
     public static let icWarning = ImageAsset(name: "ic_warning")
   }
   public enum Images {
+    public static let imgEmptyMovie = ImageAsset(name: "img_emptyMovie")
+    public static let imgFilledStar = ImageAsset(name: "img_filledStar")
+    public static let imgImdb = ImageAsset(name: "img_imdb")
+    public static let imgNotFilledStar = ImageAsset(name: "img_notFilledStar")
+    public static let imgYellowCircle = ImageAsset(name: "img_yellowCircle")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

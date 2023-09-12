@@ -10,3 +10,7 @@
 
 // MARK: - Home
 "Home.searchControllerText" = "Search";
+
+// MARK: - MovieDetail
+"MovieDetail.movieTopRatingLabelText" = "/10";
+"MovieDetail.similarMoviesLabelText" = "Benzer Filmler";

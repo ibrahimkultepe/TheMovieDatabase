@@ -25,6 +25,8 @@ public class HomeHeaderView: UICollectionReusableView, ReusableView {
         }
     }
     
+    public var didSelectItemAtHomeHeaderView: IntClosure?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()
@@ -74,6 +76,11 @@ extension HomeHeaderView {
 
 // MARK: - UICollectionViewDataSource
 extension HomeHeaderView: UICollectionViewDataSource {
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movieId = homeHeaderData[indexPath.row].movieId
+        didSelectItemAtHomeHeaderView?(movieId)
+    }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return homeHeaderData.count

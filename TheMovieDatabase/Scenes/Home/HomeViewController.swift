@@ -48,7 +48,7 @@ extension HomeViewController {
     
     private func addSubviews() {
         view.addSubview(collectionView)
-        collectionView.edgesToSuperview()
+        collectionView.edgesToSuperview(usingSafeArea: true)
     }
 }
 
@@ -62,7 +62,6 @@ extension HomeViewController {
         collectionView.registerFooter(ActivityIndicatorViewFooterView.self)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
@@ -140,6 +139,10 @@ extension HomeViewController: UIScrollViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension HomeViewController: UICollectionViewDataSource {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.didSelectMovieDetail(indexPath: indexPath)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItems
     }
@@ -158,6 +161,10 @@ extension HomeViewController: UICollectionViewDataSource {
         case UICollectionView.elementKindSectionHeader:
             let header: HomeHeaderView = collectionView.dequeueReusableCell(ofKind: kind, for: indexPath)
             header.homeHeaderData = viewModel.homeHeaderCellItems
+            header.didSelectItemAtHomeHeaderView = { [weak self] movieId in
+                guard let self = self else { return }
+                self.viewModel.didSelectHeaderMovieDetail(indexPath: indexPath, movieId: movieId)
+            }
             return header
         case UICollectionView.elementKindSectionFooter:
             let footer: ActivityIndicatorViewFooterView = collectionView.dequeueReusableCell(ofKind: kind, for: indexPath)

@@ -21,3 +21,12 @@ final class SearchViewModel: BaseViewModel<SearchRouter>, SearchViewProtocol {
         }
     }
 }
+
+// MARK: - Actions
+extension SearchViewModel {
+    
+    func didSelectMovieDetail(indexPath: IndexPath) {
+        let movieId = cellItems[indexPath.row].movieId
+        router.pushMovieDetail(movieId: movieId)
+    }
+}

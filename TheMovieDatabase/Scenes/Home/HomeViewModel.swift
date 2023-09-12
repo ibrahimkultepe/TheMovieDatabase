@@ -14,9 +14,7 @@ protocol HomeViewProtocol: HomeViewDataSource, HomeViewEventSource {}
 final class HomeViewModel: BaseViewModel<HomeRouter>, HomeViewProtocol {
     
     private var page = 1
-    
-    var searchMovieItems = [SearchCellModelProtocol]()
-    
+        
     var isPagingEnabled = false
     var isRequestEnabled = false
     
@@ -29,6 +27,7 @@ final class HomeViewModel: BaseViewModel<HomeRouter>, HomeViewProtocol {
     
     private var cellItems = [HomeMovieCellModelProtocol]()
     var homeHeaderCellItems = [HomeHeaderCellModelProtocol]()
+    var searchMovieItems = [SearchCellModelProtocol]()
     
     var numberOfItems: Int {
         return cellItems.count
@@ -52,6 +51,19 @@ final class HomeViewModel: BaseViewModel<HomeRouter>, HomeViewProtocol {
         isGetUpcomingMovieSuccess = false
         isGetNowPlayingMovieSuccess = false
         getData(showLoading: false)
+    }
+}
+
+// MARK: - Actions
+extension HomeViewModel {
+    
+    func didSelectMovieDetail(indexPath: IndexPath) {
+        let movieId = cellItems[indexPath.row].movieId
+        router.pushMovieDetail(movieId: movieId)
+    }
+    
+    func didSelectHeaderMovieDetail(indexPath: IndexPath, movieId: Int) {
+        router.pushMovieDetail(movieId: movieId)
     }
 }
 

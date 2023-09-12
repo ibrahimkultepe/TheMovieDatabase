@@ -20,6 +20,13 @@ public enum L10n {
     /// Search
     public static let searchControllerText = L10n.tr("Modules", "Home.searchControllerText")
   }
+
+  public enum MovieDetail {
+    /// /10
+    public static let movieTopRatingLabelText = L10n.tr("Modules", "MovieDetail.movieTopRatingLabelText")
+    /// Benzer Filmler
+    public static let similarMoviesLabelText = L10n.tr("Modules", "MovieDetail.similarMoviesLabelText")
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
